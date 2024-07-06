@@ -14,7 +14,11 @@ add_executable(async_writer main.cpp
     notify_queue.hpp
     accumulator.hpp accumulator.cpp
     command.hpp command.cpp
-    utility.hpp )
+    utility.hpp
+    postprocessor.hpp postprocessor.cpp
+    postprocessor_handler.hpp
+    output_handler.hpp output_handler.cpp
+    logging_handler.hpp logging_handler.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS async_writer

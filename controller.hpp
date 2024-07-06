@@ -2,7 +2,6 @@
 
 #include "accumulator.hpp"
 #include "utility.hpp"
-#include "command.hpp"
 
 namespace async {
 
