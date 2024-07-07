@@ -1,10 +1,14 @@
 #pragma once
 
 #include <memory>
+#include <ostream>
 
+#include "command.hpp"
 #include "utility.hpp"
 
 namespace async {
+
+void fill_stream(std::ostream& stream, const command::commands& commands);
 
 class postprocessor_handler {
  public:
