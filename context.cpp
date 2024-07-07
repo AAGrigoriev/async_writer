@@ -24,7 +24,8 @@ context::context()
       std::jthread(&post_controller::run, &second_logging_controller_);
 }
 
-void context::process_command(std::string command, std::size_t bulk_size) {
+void context::process_command(const std::string& command,
+                              std::size_t bulk_size) {
   auto result = parser().parse_command(command);
   controller_.set_max_depth(bulk_size);
   controller_.process_command(std::move(result));

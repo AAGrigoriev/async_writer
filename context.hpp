@@ -12,7 +12,7 @@ class context {
  public:
   context();
 
-  void process_command(std::string command, std::size_t bulk_count);
+  void process_command(const std::string& command, std::size_t bulk_count);
 
  private:
   s_command_queue logging_queue_;

@@ -3,7 +3,7 @@
 namespace async {
 
 post_controller::post_controller(postprocessor_handler::u_handler&& handler,
-                             s_command_queue command_queue) {}
+                                 s_command_queue command_queue) {}
 
 void post_controller::run() {
   s_command result_command;
