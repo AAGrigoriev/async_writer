@@ -3,6 +3,7 @@
 #include <thread>
 
 #include "controller.hpp"
+#include "postprocessor.hpp"
 #include "utility.hpp"
 
 namespace async {
@@ -17,6 +18,10 @@ class context {
   s_command_queue logging_queue_;
   s_command_queue output_queue_;
   controller controller_;
+
+  post_controller output_post_controller_;
+  post_controller first_logging_controller_;
+  post_controller second_logging_controller_;
 
   std::jthread first_logger_thread_;
   std::jthread second_logger_thread_;

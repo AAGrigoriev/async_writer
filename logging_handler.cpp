@@ -1,6 +1,6 @@
 #include "logging_handler.hpp"
 
-#include <fstream>>
+#include <fstream>
 #include <string>
 
 namespace async {

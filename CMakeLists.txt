@@ -19,7 +19,9 @@ add_executable(async_writer main.cpp
     postprocessor_handler.hpp
     output_handler.hpp output_handler.cpp
     logging_handler.hpp logging_handler.cpp
-    postprocessor_handler.cpp)
+    postprocessor_handler.cpp
+    async.hpp
+    async.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS async_writer

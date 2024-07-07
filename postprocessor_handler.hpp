@@ -14,6 +14,8 @@ class postprocessor_handler {
  public:
   using u_handler = std::unique_ptr<postprocessor_handler>;
 
+  virtual ~postprocessor_handler() = default;
+
  public:
   virtual void handle_command(s_command&& command) = 0;
 };

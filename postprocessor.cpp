@@ -2,10 +2,10 @@
 
 namespace async {
 
-postprocessor::postprocessor(postprocessor_handler::u_handler&& handler,
+post_controller::post_controller(postprocessor_handler::u_handler&& handler,
                              s_command_queue command_queue) {}
 
-void postprocessor::run() {
+void post_controller::run() {
   s_command result_command;
   while (command_queue_->try_pop(result_command)) {
     handler_->handle_command(std::move(result_command));
