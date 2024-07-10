@@ -3,7 +3,6 @@
 #include <memory>
 #include <ostream>
 
-#include "command.hpp"
 #include "utility.hpp"
 
 namespace async {

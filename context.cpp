@@ -8,9 +8,9 @@
 
 namespace async {
 
-context::context()
+context::context(std::mutex& output_mutex)
     : controller_(logging_queue_, output_queue_),
-      output_post_controller_(std::make_unique<output_handler>(),
+      output_post_controller_(std::make_unique<output_handler>(output_mutex),
                               output_queue_),
       first_logging_controller_(std::make_unique<logging_handler>("file_1"),
                                 logging_queue_),

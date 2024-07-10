@@ -7,8 +7,8 @@ namespace async {
 
 class post_controller {
  public:
-    post_controller(postprocessor_handler::u_handler&& handler,
-                s_command_queue command_queue);
+  post_controller(postprocessor_handler::u_handler&& handler,
+                  s_command_queue command_queue);
 
   void run();
 

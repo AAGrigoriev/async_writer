@@ -43,11 +43,6 @@ class notifying_queue {
     m_cv.notify_all();
   }
 
-  std::queue<T> get_queue() const {
-    std::unique_lock lock(m_mutex);
-    return m_queue;
-  }
-
  private:
   std::queue<T> m_queue;
   bool m_stopping = false;

@@ -8,7 +8,7 @@ namespace async {
 
 class parser {
  public:
-  std::vector<std::string> parse_command(std::string_view input_text);
+  std::string parse_command(std::string_view input_text);
 };
 
 }  // namespace async

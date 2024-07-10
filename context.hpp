@@ -1,16 +1,16 @@
 #pragma once
 
+#include <mutex>
 #include <thread>
 
-#include "controller.hpp"
-#include "postprocessor.hpp"
-#include "utility.hpp"
+#include "post_processing/postprocessor.hpp"
+#include "processing/controller.hpp"
 
 namespace async {
 
 class context {
  public:
-  context();
+  context(std::mutex& ouput_mutex);
 
   void process_command(const std::string& command, std::size_t bulk_count);
 
