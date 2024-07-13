@@ -27,7 +27,7 @@ context::context(std::mutex& output_mutex)
 void context::process_command(const std::string& command,
                               std::size_t bulk_size) {
   auto result = parser().parse_command(command);
-  controller_.set_max_depth(bulk_size);
+    controller_.set_bulk_size(bulk_size);
   controller_.process_command(std::move(result));
 }
 

@@ -9,13 +9,13 @@ class controller {
  public:
   controller(s_command_queue logging_queue, s_command_queue print_queue);
 
-  void set_max_depth(std::size_t max_depth) noexcept;
+  void set_bulk_size(std::size_t max_depth) noexcept;
 
   void process_command(std::vector<std::string>&& command);
 
  private:
   struct depth {
-    std::size_t max_depth{};
+    std::size_t bulk_size{};
     int current_depth{};
   };
 

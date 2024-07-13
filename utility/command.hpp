@@ -13,6 +13,8 @@ struct command {
   command(command&& command) noexcept;
   command(commands&& commands, time_point time_point);
 
+  bool operator==(const command& other);
+
   std::vector<std::string> commands_;
   time_point time_point_;
 };
