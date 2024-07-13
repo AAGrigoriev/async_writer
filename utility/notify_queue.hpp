@@ -15,7 +15,7 @@ class notifying_queue {
   bool try_pop(T& t) {
     std::unique_lock lock(m_mutex);
 
-    m_cv.wait(lock, [this] { return (m_queue.size() > 0) || m_stopping; });
+    m_cv.wait(lock, [this] { return m_queue.size() > 0 || m_stopping; });
 
     if (m_queue.size() > 0) {
       t = std::move(m_queue.front());

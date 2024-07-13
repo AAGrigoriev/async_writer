@@ -9,7 +9,7 @@ find_package(Boost COMPONENTS program_options REQUIRED )
 find_package(Threads)
 find_package(GTest REQUIRED)
 
-add_library(async_writer STATIC
+add_library(lib_async STATIC
     main.cpp
     context.hpp
     context.cpp
@@ -41,13 +41,13 @@ include_directories(processing)
 include_directories(post_processing)
 
 
-target_link_libraries(async_writer
+target_link_libraries(lib_async
         ${Boost_LIBRARIES}
         ${CMAKE_THREAD_LIBS_INIT})
 
 
 add_executable(main main.cpp)
-target_link_libraries(main async_writer)
+target_link_libraries(main lib_async)
 
 
 add_executable(unit_tests
@@ -58,7 +58,7 @@ add_executable(unit_tests
 target_link_libraries(unit_tests
         gtest
         pthread
-        async_writer)
+        lib_async)
 
 enable_testing()
 

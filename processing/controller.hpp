@@ -7,11 +7,13 @@ namespace async {
 
 class controller {
  public:
-  controller(s_command_queue logging_queue, s_command_queue print_queue);
+  controller(s_command_queue logging_queue, s_command_queue output_queue);
 
   void set_bulk_size(std::size_t max_depth) noexcept;
 
   void process_command(std::vector<std::string>&& command);
+
+  void stop();
 
  private:
   struct depth {
@@ -21,7 +23,7 @@ class controller {
 
  private:
   s_command_queue logging_queue_;
-  s_command_queue print_queue_;
+     s_command_queue output_queue_;
   accumulator command_accumulator_;
   depth depth_;
 };

@@ -3,7 +3,7 @@
 namespace async {
 
 void accumulator::store_command(std::string&& command) {
-  if (!commands_.empty()) {
+  if (commands_.empty()) {
     command_start_time_ = std::chrono::steady_clock::now();
   }
 

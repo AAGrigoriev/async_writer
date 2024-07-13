@@ -8,9 +8,9 @@
 
 namespace async {
 
-context::context(std::mutex& output_mutex)
+context::context()
     : controller_(logging_queue_, output_queue_),
-      output_post_controller_(std::make_unique<output_handler>(output_mutex),
+      output_post_controller_(std::make_unique<output_handler>(),
                               output_queue_),
       first_logging_controller_(std::make_unique<logging_handler>("file_1"),
                                 logging_queue_),
@@ -27,8 +27,12 @@ context::context(std::mutex& output_mutex)
 void context::process_command(const std::string& command,
                               std::size_t bulk_size) {
   auto result = parser().parse_command(command);
-    controller_.set_bulk_size(bulk_size);
+  controller_.set_bulk_size(bulk_size);
   controller_.process_command(std::move(result));
+}
+
+context::~context() {
+  controller_.stop();
 }
 
 }  // namespace async

@@ -1,13 +1,11 @@
 #include "async.hpp"
 
 #include <assert.h>
-#include <mutex>
 
 namespace async {
 
 context* connect() {
-  static std::mutex output_mutex_;
-  return new context(output_mutex_);
+  return new context();
 }
 
 void receive(context* context, const std::string& data, std::size_t bulk_size) {

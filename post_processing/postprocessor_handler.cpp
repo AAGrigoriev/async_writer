@@ -9,6 +9,7 @@ void fill_stream(std::ostream& stream, const command::commands& commands) {
     stream << separator << command;
     separator = ", ";
   }
+  stream << std::endl;
 }
 
 }  // namespace async
