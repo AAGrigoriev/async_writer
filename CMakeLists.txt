@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(async_writer LANGUAGES CXX)
+if(DEFINED ENV{GITHUB_RUN_NUMBER})
+    set(VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
+else()
+    set(VERSION 0.0.1)
+endif()
+
+project(async_writer VERSION ${VERSION})
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -9,7 +15,7 @@ find_package(Boost COMPONENTS program_options REQUIRED )
 find_package(Threads)
 find_package(GTest REQUIRED)
 
-add_library(lib_async STATIC
+add_library(async STATIC
     main.cpp
     context.hpp
     context.cpp
@@ -41,13 +47,13 @@ include_directories(processing)
 include_directories(post_processing)
 
 
-target_link_libraries(lib_async
+target_link_libraries(async
         ${Boost_LIBRARIES}
         ${CMAKE_THREAD_LIBS_INIT})
 
 
 add_executable(main main.cpp)
-target_link_libraries(main lib_async)
+target_link_libraries(main async)
 
 
 add_executable(unit_tests
@@ -58,8 +64,18 @@ add_executable(unit_tests
 target_link_libraries(unit_tests
         gtest
         pthread
-        lib_async)
+        async)
 
 enable_testing()
 
 add_test(unit_tests unit_tests)
+
+install(TARGETS main RUNTIME DESTINATION bin)
+
+set(CPACK_GENERATOR DEB)
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_CONTACT grigormaklaud@gmail.com)
+include(CPack)
+
