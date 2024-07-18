@@ -5,8 +5,6 @@
 
 namespace async {
 
-static std::mutex output_mutex;
-
 output_handler::output_handler() {}
 
 void output_handler::handle_command(s_command&& commands) {
