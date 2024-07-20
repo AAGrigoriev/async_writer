@@ -1,7 +1,6 @@
 #include "output_handler.hpp"
 
 #include <iostream>
-#include <mutex>
 
 namespace async {
 
